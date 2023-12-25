@@ -1,3 +1,8 @@
-#!/bin/bash
+#!/bin/sh
+
+echo "--> Waiting for db to be ready"
+./wait-for-it.sh db:5432
+
 echo "--> Starting beats process"
-celery -A styleguide_example.tasks worker -l info --without-gossip --without-mingle --without-heartbeat
+celery -A social_network.tasks beat -l info --scheduler django_celery_beat.schedulers:DatabaseScheduler
+

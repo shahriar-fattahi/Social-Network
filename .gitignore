@@ -127,12 +127,3 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-
-
-# media files
-/media
-
-node_modules/
-package*.json
-
-google_client_secret.json
