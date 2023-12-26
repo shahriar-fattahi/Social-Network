@@ -43,6 +43,7 @@ class RegisterApi(APIView):
             ]
         )
         confirm_password = serializers.CharField(max_length=255)
+        bio = serializers.CharField(max_length=1000)
 
         def validate_email(self, email):
             if BaseUser.objects.filter(email=email).exists():
