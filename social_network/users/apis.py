@@ -15,7 +15,7 @@ from drf_spectacular.utils import extend_schema
 
 
 class ProfileApi(ApiAuthMixin, APIView):
-    class OutPutSerializer(serializers.ModelSerializer):
+    class OutPutProfileSerializer(serializers.ModelSerializer):
         class Meta:
             model = Profile
             fields = (
@@ -25,10 +25,12 @@ class ProfileApi(ApiAuthMixin, APIView):
                 "subscription_count",
             )
 
-    @extend_schema(responses=OutPutSerializer)
+    @extend_schema(responses=OutPutProfileSerializer)
     def get(self, request):
         query = get_profile(user=request.user)
-        return Response(self.OutPutSerializer(query, context={"request": request}).data)
+        return Response(
+            self.OutPutProfileSerializer(query, context={"request": request}).data
+        )
 
 
 class RegisterApi(APIView):
@@ -43,7 +45,7 @@ class RegisterApi(APIView):
             ]
         )
         confirm_password = serializers.CharField(max_length=255)
-        bio = serializers.CharField(max_length=1000)
+        bio = serializers.CharField(max_length=1000, required=False)
 
         def validate_email(self, email):
             if BaseUser.objects.filter(email=email).exists():
