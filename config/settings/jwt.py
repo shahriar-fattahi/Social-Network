@@ -1,8 +1,7 @@
 from datetime import timedelta
-from django.conf import settings
 from config.env import env
 
-SIGNING_KEY = env("SIGNING_KEY", default=settings.SECRET_KEY)
+SIGNING_KEY = env("SIGNING_KEY", default="xxx")
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
