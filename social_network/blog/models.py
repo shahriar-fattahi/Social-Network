@@ -1,9 +1,10 @@
-from django.db import models
-from django.core.exceptions import ValidationError
-from social_network.common.models import BaseModel
 from django.contrib.auth import get_user_model
-from django_lifecycle import LifecycleModel, hook, AFTER_CREATE, AFTER_DELETE
+from django.core.exceptions import ValidationError
+from django.db import models
 from django.db.models import F
+from django_lifecycle import AFTER_CREATE, AFTER_DELETE, LifecycleModel, hook
+
+from social_network.common.models import BaseModel
 
 
 class Post(BaseModel, LifecycleModel):
@@ -15,7 +16,7 @@ class Post(BaseModel, LifecycleModel):
         unique=True,
         max_length=100,
     )
-    contnet = models.CharField(
+    content = models.CharField(
         max_length=1000,
     )
     auther = models.ForeignKey(
