@@ -28,7 +28,7 @@ git clone https://github.com/shahriar-fattahi/Social-Network
 
 2- SetUp venv
 ```
-virtualenv -p python3.10 venv
+python3 -m venv venv
 source venv/bin/activate
 ```
 
