@@ -16,8 +16,8 @@ This project is based on the description of this file([ASSIGNMENT.MD](https://gi
 
 ## ER Diagram
 Database Relationship diagram generated using [dbdiagram](https://dbdiagram.io/home)
-> [Entity-Relationship Code link](https://dbdiagram.io/d/E-commerce-6561c3da3be1495787b58a33)
-![E-commerce](https://github.com/shahriar-fattahi/django-ecommerce-api/assets/109045277/4d650bd8-3db8-4c4c-82ff-6a8ffc2afe99)
+> [Entity-Relationship Code link](https://dbdiagram.io/d/65a7c776ac844320ae1d14da)
+![sn_db](https://github.com/shahriar-fattahi/Social-Network/assets/109045277/4f2617e4-a759-44f3-9336-956bc87e6e10)
 
 ## project setup
 
