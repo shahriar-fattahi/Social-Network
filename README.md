@@ -19,11 +19,11 @@ Database Relationship diagram generated using [dbdiagram](https://dbdiagram.io/h
 > [Entity-Relationship Code link](https://dbdiagram.io/d/65a7c776ac844320ae1d14da)
 ![sn_db](https://github.com/shahriar-fattahi/Social-Network/assets/109045277/4f2617e4-a759-44f3-9336-956bc87e6e10)
 
-## project setup
 
-1- compelete cookiecutter workflow (recommendation: leave project_slug empty) and go inside the project
+## Getting Started
+1. Clone this repository to your local machine:
 ```
-cd Social Network
+git clone https://github.com/shahriar-fattahi/django-ecommerce-api
 ```
 
 2- SetUp venv
