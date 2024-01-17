@@ -5,6 +5,9 @@ from social_network.users.models import BaseUser
 
 
 def subscribe(*, user: BaseUser, email: str) -> Subscription:
+    if user.profile.followings_count == 100:
+        raise APIException("You cant follow more than 100 people")
+
     try:
         target = BaseUser.objects.get(email=email)
     except BaseUser.DoesNotExist:
