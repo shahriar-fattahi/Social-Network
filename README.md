@@ -23,7 +23,7 @@ Database Relationship diagram generated using [dbdiagram](https://dbdiagram.io/h
 ## Getting Started
 1. Clone this repository to your local machine:
 ```
-git clone https://github.com/shahriar-fattahi/django-ecommerce-api
+git clone https://github.com/shahriar-fattahi/Social-Network
 ```
 
 2- SetUp venv
