@@ -3,12 +3,13 @@ from django.utils.text import slugify
 from faker import Faker
 
 from social_network.blog.models import Post
+from social_network.users.tests.factories import BaseUserFactory
 
 
 class PostFactory(factory.django.DjangoModelFactory):
     title = Faker().unique.sentence(nb_words=10, variable_nb_words=False)
     content = Faker().paragraph(nb_sentences=2)
-    auther = None
+    auther = factory.SubFactory(BaseUserFactory)
 
     @factory.lazy_attribute
     def slug(self):
