@@ -41,7 +41,7 @@ class Post(BaseModel, LifecycleModel):
             self.auther.profile.save()
 
 
-class Subscription(BaseModel):
+class Subscription(BaseModel, LifecycleModel):
     subscriber = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE,
@@ -62,3 +62,27 @@ class Subscription(BaseModel):
 
     def __str__(self) -> str:
         return f"{self.subscriber} -> {self.target}"
+
+    @hook(AFTER_CREATE)
+    def increase_subscriptions_count(self):
+        print("inja1           +++++")
+        if self.target.profile:
+            print("inja2           +++++")
+            self.target.profile.followers_count = F("followers_count") + 1
+
+            self.target.profile.save()
+
+        if self.subscriber.profile:
+            self.subscriber.profile.followings_count = F("followings_count") + 1
+            self.subscriber.profile.save()
+
+    @hook(AFTER_DELETE)
+    def decrease_subscriptions_count(self):
+        print("inja1 delete           +++++")
+        if self.target.profile:
+            self.target.profile.followers_count = F("followers_count") - 1
+            self.target.profile.save()
+
+        if self.subscriber.profile:
+            self.subscriber.profile.followings_count = F("followings_count") - 1
+            self.subscriber.profile.save()
