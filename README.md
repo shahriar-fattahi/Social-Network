@@ -1,5 +1,5 @@
 # Social Network
-A social network API built using Django Rest Framework.
+
 
 ## About Project
 This project is based on the description of this file([ASSIGNMENT.MD](https://github.com/shahriar-fattahi/Social-Network/blob/main/ASSIGNMENT.md)).  In short, in this social network, users can share their desired post with their followers.
