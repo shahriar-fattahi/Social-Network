@@ -1,9 +1,9 @@
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
+
 from social_network.common.models import BaseModel
 
-from django.contrib.auth.models import AbstractBaseUser
 from .managers import UserManager
-from django.contrib.auth.models import PermissionsMixin
 
 
 class BaseUser(BaseModel, AbstractBaseUser, PermissionsMixin):
@@ -26,8 +26,8 @@ class BaseUser(BaseModel, AbstractBaseUser, PermissionsMixin):
 class Profile(models.Model):
     user = models.OneToOneField(BaseUser, on_delete=models.CASCADE)
     posts_count = models.PositiveIntegerField(default=0)
-    subscriber_count = models.PositiveIntegerField(default=0)
-    subscription_count = models.PositiveIntegerField(default=0)
+    followers_count = models.PositiveIntegerField(default=0)
+    followings_count = models.PositiveIntegerField(default=0)
     bio = models.CharField(max_length=1000, null=True, blank=True)
 
     def __str__(self):

@@ -1,17 +1,16 @@
-from rest_framework import status
+from django.core.validators import MinLengthValidator
+from drf_spectacular.utils import extend_schema
+from rest_framework import serializers, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework import serializers
-
-from django.core.validators import MinLengthValidator
-from .validators import number_validator, special_char_validator, letter_validator
-from social_network.users.models import BaseUser, Profile
-from social_network.api.mixins import ApiAuthMixin
-from social_network.users.selectors import get_profile
-from social_network.users.services import register
 from rest_framework_simplejwt.tokens import AccessToken, RefreshToken
 
-from drf_spectacular.utils import extend_schema
+from social_network.api.mixins import ApiAuthMixin
+from social_network.users.models import BaseUser, Profile
+from social_network.users.selectors import get_profile
+from social_network.users.services import register
+
+from .validators import letter_validator, number_validator, special_char_validator
 
 
 class ProfileApi(ApiAuthMixin, APIView):
@@ -21,8 +20,8 @@ class ProfileApi(ApiAuthMixin, APIView):
             fields = (
                 "bio",
                 "posts_count",
-                "subscriber_count",
-                "subscription_count",
+                "followers_count",
+                "followings_count",
             )
 
     @extend_schema(responses=OutPutProfileSerializer)

@@ -1,4 +1,5 @@
 from datetime import timedelta
+
 from config.env import env
 
 SIGNING_KEY = env("SIGNING_KEY", default="xxx")
