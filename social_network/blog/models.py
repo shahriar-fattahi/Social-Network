@@ -65,9 +65,7 @@ class Subscription(BaseModel, LifecycleModel):
 
     @hook(AFTER_CREATE)
     def increase_subscriptions_count(self):
-        print("inja1           +++++")
         if self.target.profile:
-            print("inja2           +++++")
             self.target.profile.followers_count = F("followers_count") + 1
 
             self.target.profile.save()
@@ -78,7 +76,6 @@ class Subscription(BaseModel, LifecycleModel):
 
     @hook(AFTER_DELETE)
     def decrease_subscriptions_count(self):
-        print("inja1 delete           +++++")
         if self.target.profile:
             self.target.profile.followers_count = F("followers_count") - 1
             self.target.profile.save()

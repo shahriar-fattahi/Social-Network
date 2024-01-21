@@ -7,9 +7,14 @@ from social_network.users.tests.factories import BaseUserFactory
 
 
 class PostFactory(factory.django.DjangoModelFactory):
-    title = Faker().unique.sentence(nb_words=10, variable_nb_words=False)
     content = Faker().paragraph(nb_sentences=2)
     auther = factory.SubFactory(BaseUserFactory)
+
+    @factory.lazy_attribute
+    def title(self):
+        title = Faker().unique.sentence(nb_words=10, variable_nb_words=False)
+        title += str(self.uid)
+        return title
 
     @factory.lazy_attribute
     def slug(self):
